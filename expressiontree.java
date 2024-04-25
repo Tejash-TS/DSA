@@ -1,85 +1,85 @@
-import java.util.*;
 import java.util.Stack;
 
+class TreeNode {
+    char data;
+    TreeNode left, right;
 
-class node{
-    char value;
-    node left,right;
-    public node(char item)
-    {
-    value=item;
-    left=right=null;
+    public TreeNode(char data) {
+        this.data = data;
+        this.left = this.right = null;
     }
 }
 
-public class Expressiontree{
-    node root;
+public class ET {
+    static boolean isOperator(char c) {
+        return c == '+' || c == '-' || c == '*' || c == '/';
+    }
 
-    //construction of expression treee
-public void tree(String exp){
-    Stack<node> stack= new Stack<>();
-    for(int i = exp.length() - 1; i >= 0; i--){
-        char c=exp.charAt(i);
-        node N=new node(c);
-        if(isoperator(c)){
-            N.left=stack.pop();
-            N.right=stack.pop();
+    public static TreeNode constructET(String prefix) {
+        Stack<TreeNode> stack = new Stack<>();
+
+        // Reading the prefix expression in reverse order
+        for (int i = prefix.length() - 1; i >= 0; i--) {
+            char c = prefix.charAt(i);
+
+            if (isOperator(c)) {
+                TreeNode leftOperand = stack.pop();
+                TreeNode rightOperand = stack.pop();
+
+                TreeNode operatorNode = new TreeNode(c);
+                operatorNode.left = leftOperand;
+                operatorNode.right = rightOperand;
+
+                stack.push(operatorNode);
+            } else {
+                TreeNode operandNode = new TreeNode(c);
+                stack.push(operandNode);
+            }
         }
-        stack.push(N);
+
+        return stack.pop();
     }
-    root=stack.pop();
-}
-//to check expression is cherector or operator
-boolean isoperator(char c){
-    return c == '+' || c == '-' || c == '*' || c == '/';
-}
 
-// psotorder traversal 
-public void postorder(node N){
+    public static void postOrderTraversal(TreeNode root) {
+        if (root == null)
+            return;
 
-    if (N==null)
-      System.out.println("stackn is empty");
-     
-    Stack<node> stack=new Stack<>();
-    stack.push(N);
-    while (!stack.isEmpty()) {
-        node current=stack.pop();
-        System.out.println(current.value +"");
-        
-        if(current.left !=null)
-         stack.push(current.left);
-        if(current.right !=null)
-         stack.push(current.left);
-        
-    }  
-}
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        Stack<Character> result = new Stack<>();
 
-// to delete treee
-public void deleteTree(node N){
-    if(N== null)
-      System.out.println("tree is empty");
-       
+        while (!stack.isEmpty()) {
+            TreeNode current = stack.pop();
+            result.push(current.data);
 
-   
-      deleteTree(N.left);
-      deleteTree(N.right);
+            if (current.left != null)
+                stack.push(current.left);
+            if (current.right != null)
+                stack.push(current.right);
+        }
 
-      N= null;
-}
-public static void main(String[] args) {
-    Expressiontree tree = new Expressiontree();
-    String exp  = "+--a*bc/def";
-    
-    // Construct the expression tree
-    tree.tree(exp);
+        while (!result.isEmpty()) {
+            System.out.print(result.pop() + " ");
+        }
+    }
 
-    // Postorder traversal
-    System.out.print("Postorder traversal: ");
-    tree. postorder(tree.root);
-    System.out.println();
+    public static void deleteTree(TreeNode root) {
+        if (root == null)
+            return;
 
-    // Delete the entire tree
-    tree.deleteTree(tree.root);
-    tree.root = null;
-}
+        deleteTree(root.left);
+        deleteTree(root.right);
+        root = null; // This line just to emphasize the deletion, though not really necessary in Java
+    }
+
+    public static void main(String[] args) {
+        String prefixExpression = "+--a*bc/def"; // Example prefix expression
+        TreeNode root = constructET (prefixExpression);
+        System.out.println("Postorder traversal of the expression tree:");
+        postOrderTraversal(root);
+
+        // Deleting the entire tree
+        deleteTree(root);
+        System.out.println("\nTree deleted.");
+    }
 }
