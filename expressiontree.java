@@ -21,14 +21,14 @@ public class ET {
         // Reading the prefix expression in reverse order
         for (int i = prefix.length() - 1; i >= 0; i--) {
             char c = prefix.charAt(i);
+            System.out.println(c);
 
             if (isOperator(c)) {
-                TreeNode leftOperand = stack.pop();
-                TreeNode rightOperand = stack.pop();
+                
 
                 TreeNode operatorNode = new TreeNode(c);
-                operatorNode.left = leftOperand;
-                operatorNode.right = rightOperand;
+                operatorNode.left = stack.pop();
+                operatorNode.right = stack.pop();
 
                 stack.push(operatorNode);
             } else {
@@ -40,29 +40,7 @@ public class ET {
         return stack.pop();
     }
 
-    public static void postOrderTraversal(TreeNode root) {
-        if (root == null)
-            return;
-
-        Stack<TreeNode> stack = new Stack<>();
-        stack.push(root);
-        Stack<Character> result = new Stack<>();
-
-        while (!stack.isEmpty()) {
-            TreeNode current = stack.pop();
-            result.push(current.data);
-
-            if (current.left != null)
-                stack.push(current.left);
-            if (current.right != null)
-                stack.push(current.right);
-        }
-
-        while (!result.isEmpty()) {
-            System.out.print(result.pop() + " ");
-        }
-    }
-
+    
     public static void deleteTree(TreeNode root) {
         if (root == null)
             return;
@@ -70,14 +48,22 @@ public class ET {
         deleteTree(root.left);
         deleteTree(root.right);
         root = null; // This line just to emphasize the deletion, though not really necessary in Java
+
     }
+   public static void Postorder(TreeNode root){
+if(root==null){
+    return;
+}
+Postorder(root.left);
+Postorder(root.right);
+System.out.println(root.data);
+   }
 
     public static void main(String[] args) {
         String prefixExpression = "+--a*bc/def"; // Example prefix expression
         TreeNode root = constructET (prefixExpression);
         System.out.println("Postorder traversal of the expression tree:");
-        postOrderTraversal(root);
-
+         Postorder(root);
         // Deleting the entire tree
         deleteTree(root);
         System.out.println("\nTree deleted.");
