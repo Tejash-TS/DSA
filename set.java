@@ -1,289 +1,137 @@
 import java.util.*;
-class data
+class tejashset{
+   
+    public static void insert(Set<Integer> set,String name)
 {
-	TreeSet<String>Pranav_Set  =new TreeSet<String>();
-	TreeSet<String>Pranav_Set01=new TreeSet<String>();
-	TreeSet<String>Pranav_Set02=new TreeSet<String>();
-	TreeSet<String>Pranav_Set03=new TreeSet<String>();
-	TreeSet<String>Pranav_Set04=new TreeSet<String>();
-	Scanner z= new Scanner(System.in);
-
-	void getdata(int num)
-	{
-		String a;
-		System.out.println("Enter the Element");
-		for (int i=1;i<=num;i++)
-		{
-			a=z.nextLine();
-			Pranav_Set.add(a);
-			System.out.println("Element Added succesfuly");
-			if(i!=num)
-				{
-					System.out.println("Eneter next Element");
-				}
-		}
-	}
-
-	void getdata01(int num)
-	{
-		String a;
-		System.out.println("Enter the Element");
-		for (int i=1;i<=num;i++)
-		{
-			a=z.nextLine();
-			Pranav_Set01.add(a);
-			System.out.println("Element Added succesfuly");
-			if(i!=num)
-				{
-					System.out.println("Eneter next Element");
-				}
-		}
-	}
-
-
-	void delete(int num)
-	{
-		String element;
-		System.out.println("Enter element");
-		
-		for(int i=1;i<=num;i++)
-		{
-			element=z.nextLine();
-			if(Pranav_Set.contains(element)== true)
-			{
-				Pranav_Set.remove(element);
-				System.out.println("Element Removed succesfuly");
-				if(i!=num)
-				{
-					System.out.println("Eneter next Element");
-				}
-			}
-			else 
-			{
-				System.out.println("Element Not Exist In Set 01");
-				if(i!=num)
-				{
-					System.out.println("Eneter next Element");
-				}
-			}
-		}
-	}
-
-
-	void delete01(int num)
-	{
-		String element;
-		System.out.println("Enter element");
-		
-		for(int i=1;i<=num;i++)
-		{
-			element=z.nextLine();
-			if(Pranav_Set01.contains(element)== true)
-			{
-				Pranav_Set01.remove(element);
-				System.out.println("Element Removed succesfuly");
-				if(i!=num)
-				{
-					System.out.println("Eneter next Element");
-				}
-			}
-			else 
-			{
-				System.out.println("Element Not Exist In Set 02");
-				if(i!=num)
-				{
-					System.out.println("Eneter next Element");
-				}
-			}
-		}
-	}
-
-
-
-	void checkElement(String element)
-	{
-		if(Pranav_Set.contains(element)== true)
-		{
-			System.out.println(element + " Is Present In Set 01");
-		}
-		else
-		{
-			System.out.println(element + " Is Not Present In Set 01");	
-		}
-
-
-		if(Pranav_Set01.contains(element)== true)
-		{
-			System.out.println(element + " Is Present In Set 02");
-		}
-		else
-		{
-			System.out.println(element + " Is Not Present In Set 02");	
-		}
-	}
-
-	void checkSize()
-	{
-		System.out.println("size of set 1 - " +Pranav_Set.size());
-		System.out.println("size of set 2 - " +Pranav_Set01.size());
-	}
-
-	
-	void display()
-	{
-		System.out.println("Set 01"+Pranav_Set);
-		System.out.println("Set 02"+Pranav_Set01);
-	}
-	void union()
-	{
-		Pranav_Set02.addAll(Pranav_Set);
-		Pranav_Set02.addAll(Pranav_Set01);
-		System.out.println("union - "+Pranav_Set02);
-	}
-	void intersection()
-	{
-		Pranav_Set03.addAll(Pranav_Set);
-		Pranav_Set03.retainAll(Pranav_Set01);
-		System.out.println(" intersection - "+Pranav_Set03);	
-	}
-	void difference()
-	{
-		Pranav_Set03.addAll(Pranav_Set);
-		Pranav_Set03.retainAll(Pranav_Set01);
-		Pranav_Set04.removeAll(Pranav_Set03);
-		System.out.println(" Difference - "+Pranav_Set04);
-	}
-	void subset()
-	{
-		
-		if(Pranav_Set.isEmpty()==false && Pranav_Set01.isEmpty()==false)
-			{
-				if(Pranav_Set.containsAll(Pranav_Set01)==true)
-				{  
-					System.out.println("Set 01 is Subset of Set 02");
-				}
-				if(Pranav_Set01.containsAll(Pranav_Set)==true)
-				{					
-					System.out.println("Set 02 is Subset of Set 01");
-				}
-				if(Pranav_Set.containsAll(Pranav_Set01)==false && Pranav_Set01.containsAll(Pranav_Set)==false)
-				{
-					System.out.println("Subset Not Exist");
-				}
-
-			}
-		else if(Pranav_Set.isEmpty()==true)
-		{
-			System.out.println("Set 01 is empty");
-		}
-		if(Pranav_Set01.isEmpty()==true) 
-		{
-			System.out.println("Set 02 is empty");
-		}	
-	}
+Scanner s=new Scanner(System.in);
+System.out.println("enter a how many element wnats to enter");
+int a=s.nextInt();
+for(int i=0;a>=i;i++){
+    System.out.println("enter element");
+    int x=s.nextInt();
+    set.add(x);
+    System.out.println(set);
+}
+System.out.println("element added sucessfully");
+}
+public static void delete(Set<Integer>set,String name){
+    Scanner s=new Scanner(System.in);
+    System.out.println("enter element to delet");
+    int x=s.nextInt();
+    set.remove(x);
+    System.out.println("element delrte sucessfully");
 
 }
+public static void display(Set<Integer>set,String name){
+   
+    
+    
+    System.out.println("set is"+set);
+
+    
+}
+public static boolean search(Set<Integer>set,String name){
+    Scanner s=new Scanner(System.in);
+    System.out.println("emter element to search");
+    int x=s.nextInt();
+  return(set.contains(x));
+}
+
+public static void union(Set<Integer> setA,Set<Integer> setB){
+    Set<Integer>U = new HashSet<>(setA);
+    U.addAll(setB);
+    System.out.println("union of set="+U);
+}
+public static void Intersection(Set<Integer> setA,Set<Integer> setB) {
+    Set<Integer>I=new HashSet<>(setA);
+    I.retainAll(setB);
+    System.out.println("Intersection="+I);
+}
+public static void diffrence(Set<Integer> setA,Set<Integer> setB){
+Set<Integer> I= new HashSet<>(setA);
+I.removeAll(setB);
+System.out.println("diffrence="+I);
+}
+public static void main(String[] args) {
+    Scanner s=new Scanner(System.in);
+    Set<Integer> setA=new HashSet<>();
+    Set<Integer> setB=new HashSet<>();
+
+      
+           
+
+  while(true){
+    System.out.println("\nMenu:");
+    System.out.println("1. Add element to set A");
+    System.out.println("2. Add element to set B");
+    System.out.println("3. Delete element from set A");
+    System.out.println("4. Delete element from set B");
+    System.out.println("5. Display elements from set A");
+    System.out.println("6. Display elements from set B");
+    System.out.println("7. Search element in set A");
+    System.out.println("8. Search element in set B");
+    System.out.println("9. Size of set A");
+    System.out.println("10. Size of set B");
+    System.out.println("11. Union of sets");
+    System.out.println("12. Intersection of sets");
+    System.out.println("13. Difference of sets");
+  
+    System.out.println("0. Exit");
 
 
-class set_dsa
+    
+    int ch = s.nextInt();
+ switch (ch) {
+                case 1:
+                insert(setA, "A");
+                    break;
+                case 2:
+                insert(setB, "B");
+                    break;
+                case 3:
+                delete(setA, "A");
+                    break;
+                case 4:
+                delete(setB, "B");
+                    break;
+                case 5:
+                    display(setA, "A");
+                    break;
+                case 6:
+                    display(setB, "B");
+                    break;
+                case 7:
+                    search(setA, "A");
+                    break;
+                case 8:
+                    search(setB, "B");
+                    break;
+                case 9:
+                    System.out.println("Size of set A: " + setA.size());
+                    break;
+                case 10:
+                    System.out.println("Size of set B: " + setB.size());
+                    break;
+                case 11:
+                union(setA, setB);
+                    break;
+                case 12:
+                    Intersection(setA, setB);
+                    break;
+                case 13:
+                diffrence(setA, setB);
+                    break;
+                case 14:
+                  
+                case 0:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");  
+ }
+}
 
-{
-	public static void main(String ab[])
-	{
-		int ch,num,ch2;
-		String ans="y";
-		String element;
-		data x=new data();
-		Scanner z=new Scanner(System.in);
-		Scanner zz=new Scanner(System.in);
+    
+}
 
-		do
-		{
-			System.out.println("Enter a choice");
-			System.out.println("1. add element");
-			System.out.println("2. remove element");
-			System.out.println("3. check element");
-			System.out.println("4. check size");
-			System.out.println("5. display set");
-			System.out.println("6. union");
-			System.out.println("7. intersection");
-			System.out.println("8. difference");
-			System.out.println("9. Subset");
-			ch=z.nextInt();
-
-			switch(ch)
-			{
-				 case 1: System.out.println("1. for Set 01");
-				 		 System.out.println("2. for Set 02");
-				 		 ch2=z.nextInt();
-
-					 		 switch(ch2)
-					 		 {
-					 		 	 case 1: System.out.println("Enter how much element want to add");
-					 		 			 num=z.nextInt();
-					 		 	 		 x.getdata(num);
-					 		 	 		 break;
-
-					 		 	 case 2: System.out.println("Enter how much element want to add");
-					 		 			 num=z.nextInt();
-					 		 	 		 x.getdata01(num);
-					 		 	 		 break;
-
-					 		 	 default: System.out.println("Wrong input");		 
-	 		 
-					 		 }
-					 	 break;
-					 	 
-				case 2:  System.out.println("1. for Set 01");
-				 		 System.out.println("2. for Set 02");
-				 		 ch2=z.nextInt();
-
-					 		 switch(ch2)
-					 		 {
-					 		 	 case 1: System.out.println("Enter how much element want to remove");
-					 		 			 num=z.nextInt();
-					 		 	 		 x.delete(num);
-					 		 	 		 break;
-
-					 		 	 case 2: System.out.println("Enter how much element want to remove");
-					 		 			 num=z.nextInt();
-					 		 	 		 x.delete01(num);
-					 		 	 		 break;
-
-					 		 	 default: System.out.println("Wrong input");		 
-	 		 
-					 		 }
-					 	 break;	
-
-				case 3:  System.out.println("Enter the element");
-				 		 element=zz.nextLine();
-                         x.checkElement(element);
-					 	 break;
-
-				case 4: 
-					 	x.checkSize();
-					 	break;
-	 	 		
-				case 5: x.display();
-						break;
-
-				case 6: x.union();
-						break;
-
-				case 7: x.intersection();
-						break;	
-
-				case 8: x.difference();
-						break;	
-
-				case 9: x.subset();
-						break;						
-
-	 	 		default: System.out.println("Wrong input");
-			}
-				System.out.println("Do you Want to continue y/n");
-				ans=zz.nextLine();
-		}
-		while(ans.equals("y")||ans.equals("Y"));
-	}
 }
