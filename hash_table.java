@@ -3,7 +3,7 @@ import java.util.*;
 class Data
 {
 
-    int limit;
+    
 	int Arr[]=new int[10];
 	Scanner z=new Scanner(System.in);
 	void getdata(int num)
@@ -22,10 +22,9 @@ class Data
 		System.out.println("Data Before hashing");
 		for(int i=0;i<num;i++)
 		{
-			if(Arr[i] != -1)
-			{
+			
 				System.out.println("telephone no "+ i +"-"+ Arr[i]);
-			}
+			
 		}
 	}
 	int Arr2[]={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
@@ -34,10 +33,10 @@ class Data
    void Hashdata(int num)
    {
 	   
-	   	int result=0;
+	  
 	   	for (int i=0;i<num;i++)
 	   	{
-	   		result=Arr[i]%10;
+	   		int result=Arr[i]%10;
 	   		if(Arr2[result]== -1)
 	   		{
 	   			Arr2[result] = Arr[i];
@@ -50,7 +49,7 @@ class Data
 	   				
 	   				if (Arr2[j]== -1)
 	   				{
-	   					Arr3[result]=j;
+	   					
 	   					Arr2[j] = Arr[i];
 	   					break;
 	   				}
@@ -62,7 +61,7 @@ class Data
 	   						if(Arr2[k] == -1)
 	   						{
 	 							Arr2[k] = Arr[i];
-	 							Arr3[result]=k;
+	 							
 	   							break;
 	   						}
 	   					}		
@@ -108,7 +107,7 @@ class hash_table
 			System.out.println("2. Display Data");
 			System.out.println("3. Start Hashing ");
 			System.out.println("4. Display Hashing ");
-			// System.out.println("5. do all");
+			
 			ch=z.nextInt();
 			switch(ch)
 			{
@@ -124,19 +123,13 @@ class hash_table
 					case 4: x.display();
 							break;	
 
-					// case 5: x.getdata(num);
-					// 		x.display(num);
-					// 		x.Hashdata(num);
-					// 		x.display();
-					// 		break;
-
-					default: System.out.println("Invaild Input");												 
+				
+					default: System.out.println("exiting...");	
+					break;											 
 			}
-			System.out.println("Do you want to continue y/n");
-			Scanner zz=new Scanner(System.in);
-			ans=zz.nextLine();
-		}
-		while(ans.equals("y")||ans.equals("Y"));
-		
+			
+			
+		}while(ch != 5);
+	
 	}
 }
